@@ -1,0 +1,90 @@
+body {
+    background-color: #252734;
+    color: gray;
+}
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1250px;
+    max-height: 200px;
+}
+div {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+section {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+h1, h2, h3, h4 {
+    color: gray;
+}
+table {
+    font-family: Nunito,sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    counter-reset: rowNumber;
+}
+
+th {
+    background-color: #28395d;
+    color: darkgrey;
+}
+
+td, th, tr {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table tr:not(:first-child) {
+    counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+/*
+tr:nth-child(even) {
+    background-color: silver;
+    color: black;
+}
+*/
+#menu-h {
+    
+}
+
+#menu-h ul {
+    list-style: none;
+    margin: auto;
+    width: 90%;
+    padding: 0px;
+    background-color: #28395d;
+}
+
+#menu-h ul li {
+    display: inline;
+}
+
+#menu-h ul li a {
+    color: #FFF;
+    padding: 10px;
+    font-size: 15px;
+    display: inline-block;
+    text-decoration: none;
+    transition: background .4s;
+}
+
+#menu-h ul li a:hover {
+    background-color: rgb(24, 139, 233);
+}
+
+#menu-h ul li:last-child a {
+    float: right;
+}
