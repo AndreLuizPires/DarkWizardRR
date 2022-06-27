@@ -26,23 +26,40 @@
 	<main>
 		<section>
 			<h2>Acompanhamento Guerra:</h1>
+
+				<?php 
+					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` INNER JOIN `membros` ON membros.ID_JOGO = hist_guerra.ID_PLAYER WHERE DATA = '20220606' GROUP BY DATA ORDER BY GUERRA, PONTOS_DIA DESC;");
+
+					$sql->execute();
+					foreach ($sql as $key => $value) {
+				?>
+					
+				<b><label class="pGuerra">GUERRA: </label></b> <?php echo $value['GUERRA'] ?> </br>
+				<b><label class="pGuerra">FASE: </label></b> <?php echo $value['FASE'] ?> </br>
+				<b><label class="pGuerra">DATA: </label></b> <?php echo date_format (new DateTime($value['DATA']), 'd/m/Y') ?> </br></br>
+				
+				
+				
+				
 			
+				<?php
+				}
+				?>
 				<table>
 					<tr>
 						<th>Rank</th>
 						<th>Cod</th>
-						<th>Guerra</th>
-						<th>Fase</th>
-						<th>Data</th>
+						<th>Nick</th>
 						<th>Rep</th>
 						<th>Atqs Possiveis</th>
 						<th>Atqs Feitos</th>
 						<th>Pontos</th>
 						<th>Media p/ Sandalia</th>
+						<th>Status Atqs</th>
 					</tr>
 
 					<?php 
-					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` ORDER BY GUERRA;");
+					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` LEFT JOIN `membros` ON membros.ID_JOGO = hist_guerra.ID_PLAYER ORDER BY GUERRA, PONTOS_DIA DESC;");
 
 					$sql->execute();
 					foreach ($sql as $key => $value) {
@@ -50,14 +67,13 @@
 						<tr>
 							<td></td>
 							<td><?php echo $value['ID_PLAYER'] ?></td>
-							<td><?php echo $value['GUERRA'] ?></td>
-							<td><?php echo $value['FASE'] ?></td>
-							<td><?php echo $value['DATA'] ?></td>
+							<td><?php echo $value['NICK'] ?></td>
 							<td><?php echo $value['REPUTACAO_DIA'] ?></td>
 							<td><?php echo $value['MAX_ATK_DIA'] ?></td>
 							<td><?php echo $value['SANDALIAS_USADAS_DIA'] ?></td>
 							<td><?php echo $value['PONTOS_DIA'] ?></td>
 							<td><?php echo $value['MEDIA_DIA'] ?></td>
+							<td><?php echo $value['STATUS_ATK_DIA'] ?></td>
 						</tr>
 					<?php
 					}

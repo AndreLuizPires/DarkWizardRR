@@ -1,7 +1,7 @@
     <nav id="menu-h">
         <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="guerra.php">Guerra</a></li>
-            <li><a href="#">Sobre</a></li>
+            <li><a href="index.php">HOME</a></li>
+            <li><a href="guerra.php">GUERRA</a></li>
+            <li><a href="#">SOBRE</a></li>
         </ul>
     </nav>

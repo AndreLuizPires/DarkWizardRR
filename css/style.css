@@ -20,6 +20,11 @@ section {
     width: 90%;
     padding: 10px;
 }
+.pGuerra {
+    /*border: 1px solid #dddddd;*/
+    width: 5%;
+    padding: 2px;
+}
 h1, h2, h3, h4 {
     color: gray;
 }
@@ -28,11 +33,11 @@ table {
     border-collapse: collapse;
     width: 100%;
     counter-reset: rowNumber;
+    color: #dddddd;
 }
 
 th {
     background-color: #28395d;
-    color: darkgrey;
 }
 
 td, th, tr {
