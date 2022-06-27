@@ -28,19 +28,16 @@
 			<h2>Acompanhamento Guerra:</h1>
 
 				<?php 
-					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` INNER JOIN `membros` ON membros.ID_JOGO = hist_guerra.ID_PLAYER WHERE DATA = '20220606' GROUP BY DATA ORDER BY GUERRA, PONTOS_DIA DESC;");
+					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` INNER JOIN `membros` ON membros.ID_JOGO = hist_guerra.ID_PLAYER WHERE DATA = DATE_ADD(CURDATE(), INTERVAL -21 DAY) GROUP BY DATA ORDER BY GUERRA, PONTOS_DIA DESC;");
 
 					$sql->execute();
 					foreach ($sql as $key => $value) {
+
 				?>
-					
+
 				<b><label class="pGuerra">GUERRA: </label></b> <?php echo $value['GUERRA'] ?> </br>
 				<b><label class="pGuerra">FASE: </label></b> <?php echo $value['FASE'] ?> </br>
-				<b><label class="pGuerra">DATA: </label></b> <?php echo date_format (new DateTime($value['DATA']), 'd/m/Y') ?> </br></br>
-				
-				
-				
-				
+				<b><label class="pGuerra">DATA: </label></b> <?php echo date_format (new DateTime($value['DATA']), 'd/m/Y') ?> </br></br>				
 			
 				<?php
 				}
