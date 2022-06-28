@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	include('config.php');
 
 ?>
@@ -6,11 +6,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Cla Dark Wizard</title>
   <link rel="stylesheet" href="css/style.css">
-  <meta name="author" content="Andr� Luiz @ZeroGC" />
+  <meta name="author" content="André Luiz @ZeroGC" />
 </head>
 <body>
 

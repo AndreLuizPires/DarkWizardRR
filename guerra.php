@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	include('config.php');
 
 ?>
@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Cla Dark Wizard</title>
   <link rel="stylesheet" href="css/style.css">
-  <meta name="author" content="Andr� Luiz @ZeroGC" />
+  <meta name="author" content="André Luiz @ZeroGC" />
 </head>
 <body>
 
@@ -27,27 +27,40 @@
 		<section>
 			<h2>Acompanhamento Guerra:</h1>
 
-				<?php 
-					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` INNER JOIN `membros` ON membros.ID_JOGO = hist_guerra.ID_PLAYER WHERE DATA = DATE_ADD(CURDATE(), INTERVAL -21 DAY) GROUP BY DATA ORDER BY GUERRA, PONTOS_DIA DESC;");
+				<?php  
+					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` INNER JOIN `membros` ON membros.ID_JOGO = hist_guerra.ID_PLAYER WHERE DATA = DATE_ADD(CURDATE(), INTERVAL -1 DAY) GROUP BY DATA ORDER BY GUERRA, PONTOS_DIA DESC;");
+					
+					try {
+						$sql->execute();
+					}catch (Exception $e) {
+						echo 'Erro: ',  $e->getMessage(), "\n";
+					}finally {
 
-					$sql->execute();
+					?>
+						<b><label class="pGuerra">GUERRA: </label></b> <?php echo 'Levantando informações...'; ?> </br>
+						<b><label class="pGuerra">FASE: </label></b> <?php echo 'Levantando informações...'; ?> </br>
+						<b><label class="pGuerra">DATA: </label></b> <?php echo date('d/m/Y', strtotime("-1 days")); ?> </br></br>				
+		
+						<?php
+					}
+				
+				
 					foreach ($sql as $key => $value) {
 
 				?>
 
-				<b><label class="pGuerra">GUERRA: </label></b> <?php echo $value['GUERRA'] ?> </br>
+				<b><label class="pGuerra">GUERRA: </label></b> <?php echo $value['GUERRA'] ? $value['GUERRA'] : 'null' ?> </br>
 				<b><label class="pGuerra">FASE: </label></b> <?php echo $value['FASE'] ?> </br>
 				<b><label class="pGuerra">DATA: </label></b> <?php echo date_format (new DateTime($value['DATA']), 'd/m/Y') ?> </br></br>				
 			
 				<?php
 				}
+
 				?>
 				<table>
 					<tr>
 						<th>Rank</th>
-						<th>Cod</th>
 						<th>Nick</th>
-						<th>Rep</th>
 						<th>Atqs Possiveis</th>
 						<th>Atqs Feitos</th>
 						<th>Pontos</th>
@@ -56,16 +69,14 @@
 					</tr>
 
 					<?php 
-					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` LEFT JOIN `membros` ON membros.ID_JOGO = hist_guerra.ID_PLAYER ORDER BY GUERRA, PONTOS_DIA DESC;");
+					$sql = MySql::conectar()->prepare("SELECT * FROM `hist_guerra` LEFT JOIN `membros` ON membros.ID_JOGO = hist_guerra.ID_PLAYER WHERE DATA = DATE_ADD(CURDATE(), INTERVAL -1 DAY) ORDER BY GUERRA, PONTOS_DIA DESC;");
 
 					$sql->execute();
 					foreach ($sql as $key => $value) {
 					?>
 						<tr>
 							<td></td>
-							<td><?php echo $value['ID_PLAYER'] ?></td>
 							<td><?php echo $value['NICK'] ?></td>
-							<td><?php echo $value['REPUTACAO_DIA'] ?></td>
 							<td><?php echo $value['MAX_ATK_DIA'] ?></td>
 							<td><?php echo $value['SANDALIAS_USADAS_DIA'] ?></td>
 							<td><?php echo $value['PONTOS_DIA'] ?></td>
