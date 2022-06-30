@@ -93,3 +93,12 @@ tr:nth-child(even) {
 #menu-h ul li:last-child a {
     float: right;
 }
+
+.CadUser {
+    color: gray;
+    text-decoration: none;
+    /*padding: 10px;
+    font-size: 15px;
+    display: inline-block;
+    transition: background .4s;*/
+}

@@ -25,12 +25,12 @@
 	</header>
 	<main>
 		<section>
-			<h2>Membros:</h1>
+			<h2>Membros ativos:</h1>
 			
 				<table>
 					<tr>
-						<th>QTD</th>
-						<th>COD</th>
+						<th>QQUANTIDADE</th>
+						<th>ID CONVITE</th>
 						<th>NOME</th>
 						<th>NICK</th>
 					</tr>

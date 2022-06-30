@@ -8,6 +8,6 @@
             <li><a href="#">DECKS COOP</a></li>
             <li><a href="#">FOICE</a></li>
             <li><a href="#">SOBRE</a></li>
-            <li><a href="#">ADMIN</a></li>
+            <li><a href="login.php">LOGIN</a></li>
         </ul>
     </nav>
